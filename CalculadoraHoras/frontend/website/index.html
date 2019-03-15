@@ -1,0 +1,35 @@
+<html>
+<head>
+    <script src="../logic/logic.js"></script>
+</head>
+<body>
+    Enter Hours: <input type="text" id="inputHours"><br>
+    <button id="calculateButton" onclick="publishHours()">Calculate hours</button><br>
+    Remaining Hours: <p id="days"> 0</p> <p id="hours"> 0</p> <p id="minutes">0</p>
+</body>   
+</html>
+<script>
+    window.publishHours = function(){
+        let inputHours = document.getElementById('inputHours').value
+        psgo.call('web.calculate.get', inputHours).then(m => {
+            document.getElementById("days").innerText = "Days: " + m.days,
+            document.getElementById("hours").innerText = "Hours: " + m.hours,
+            document.getElementById("minutes").innerText = "Minutes: " + m.minutes
+        })
+    }
+    // window.onload = function(){
+    //     window.psgo.subscribeFuncs({
+    //         "web.calculate.result.day": (m) => {
+    //             document.getElementById('days').innerText = "Days: " + m.dat || '0'
+    //         },
+    //         "web.calculate.result.hour": (m) => {
+    //             document.getElementById('hours').innerText = "Hours: " + m.dat || '0'
+    //         },
+    //         "web.calculate.result.minute": (m) => {
+    //             document.getElementById('minutes').innerText = "Minutes: " + m.dat || '0'
+    //         }
+    //     })
+    // }
+
+    
+</script>
